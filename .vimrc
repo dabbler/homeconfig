@@ -34,6 +34,7 @@ autocmd FileType xml setlocal foldmethod=syntax
 
 map gF ]]V?(<CR>y{pi/** {{{ <ESC>/{<CR>dd/^{<CR>?(<CR>O0<C-D> */<ESC>][o/* }}} */<ESC>+
 
+map <C-Enter> <C-w><C-]><C-w>T
 map <C-T>	:bro tabnew .<CR>
 map <C-N>	:tabnext<CR>
 map <C-P>	:tabprev<CR>
