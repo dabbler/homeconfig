@@ -40,33 +40,27 @@ map <C-N>	:tabnext<CR>
 map <C-P>	:tabprev<CR>
 map <F1>	[[zz
 map <F2>	]]zz
-map <F3> '<O0/ *hx'>o0*/'<
-map <F11> '<O#ifdef ANTIQUE'>o#else#endif'<b
+map <F3> '<O0<C-D>/ *hx'>o0<C-D>*/'<
+map <F4> :NERDTreeToggle<CR>
+map <F11> '<O#ifdef ANTIQUE<ESC>'>o#else<CR>#endif<ESC>'<b
 
-map [11~	[[zz
-map [12~	]]zz
-map [15~	r0jr1jr2jr3jr4jr5jr6jr7jr8jr9j
-map [17~	.j.j.j.j.j.j.j.j.j.j
-map OS	:r .signatures/.signature.inform
-map [20~ :!make -k >& errlist &<CR>
-map [21~	:!vmi | tee vmi.out
-"map [13~	O0/*+
-"map [14~	o0*/-
-"map [23~	O0#ifdef ANTIQUE+
-"map [24~	o0#else#endif--
-map [13~ '<O0/*'>o0*/'<
-map [23~ '<O#ifdef ANTIQUE'>o#else#endif'<b
-map g> :s/^\\([^>]\\)/> \\1/
-map g< :s/^> *//
+map g/ :s/^/\/\//<CR>
+map g\ :s/^\(\s*\)\/\//\1/<CR>
+
+map g> :s/^\([^>]\)/> \1/<CR>
+map g< :s/^> *//<CR>
 
 map gg	G
-map qq	:e #
-map vv	:!cat errlist
+map qq	:e #<CR>
 
-map OM 
-map 	p :cp
-map 	n :cn
-map 		 :cf errlist
+map <C-K> :cn
+
+map <ESC>OM <CR>
+
+"map 	p :cp<CR>
+"map 	n :cn<CR>
+"map 		 :cf errlist<CR>
+
 map Îw 1G
 map Îu G$
 map Î„ H
@@ -92,14 +86,15 @@ set nowrap
 "set iskeyword=a-z,A-Z,0-9,_,.,-,>
 set viminfo='50,:100,/100,\"1000
 "set path=.,inc,../inc,/usr/include,/usr/X11R6/include,C:/Qt/2010.02.1/qt/include/ 
-set path=.,inc,../inc,/usr/include
+set path=.,inc,../inc,/usr/include,Include,Includes,../include,../includes
 
 set errorfile=errlist
 "set errorformat=%f(%l):\ Error!\ %t%n:%m,file\ %*[^(](%f):%m
 set errorformat=%f:%l:\ %m,In\ file\ included\ from\ %f:%l:,\^I\^Ifrom\ %f:%l%m
 set makeprg=make\ -k
 set shellpipe=|&\ tee
-map  :cn
+set grepprg=grep
+
 
 " the following fix works also
 "map  <BS>
@@ -148,8 +143,8 @@ highlight Constant gui=NONE guibg=grey95
 highlight Special gui=NONE guibg=grey95
 highlight Search guibg=grey92
 
-"menu Comment./*\ */ '<O0/*'>o0*/'<
-"menu Comment.Antique '<O#ifdef ANTIQUE'>o#else#endif'<b
+"menu Comment./*\ */ '<O0<C-D>/*'>o0<C-D>*/'<
+"menu Comment.Antique '<O#ifdef ANTIQUE<ESC>'>o#else<CR>#endif<ESC>'<b
 
 set printoptions=paper:a4
 
